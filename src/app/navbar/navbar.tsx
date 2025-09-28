@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
 import { IoLibrary } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
     const links=[
@@ -24,6 +25,11 @@ const Navbar = () => {
                 </Link>
             ))}
         </div>
+        <Link href="https://github.com/evrnzhn04" className='absolute bottom-5 p-5 flex flex-row justify-center gap-4 w-64 hover:scale-105
+                                 transition-all duration-200'>
+            <FaGithub size={30}/>
+            <p className='font-medium text-xl'>evrenzhn04</p>
+        </Link>
     </nav>
   )
 }
