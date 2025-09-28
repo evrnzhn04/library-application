@@ -51,6 +51,16 @@ export default function Home() {
         </div>
       </div>
 
+      <footer className="mx-20 border-t-2 border-slate-500 p-6 mt-10 text-center text-slate-300 flex flex-col items-center gap-1">
+        <p className="font-medium text-lg">This page is part of a Next.js + Neon DB CRUD tutorial.</p>
+        <p className="font-medium text-sm">You can learn how to fetch, create, update, and delete books in a database</p>
+        <p className="font-medium text-sm">while building a simple library management interface.</p>
+        <p className="font-medium text-sm">2025</p>
+
+      </footer>
+
+
+
     </main>
   );
 }
