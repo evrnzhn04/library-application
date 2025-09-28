@@ -2,38 +2,33 @@ import prisma from "@/app/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
 //DELETE
-export async function DELETE(request:NextRequest, props:{params:{id:string}}){
-    const params =props.params;
-
-    try{
-        const {id}=params;
+export async function DELETE(request: NextRequest, {params}: {params: Promise<{id: string}>}) {
+    try {
+        const {id} = await params;
         await prisma.book.delete({
-            where:{id}
+            where: {id}
         });
 
         return NextResponse.json({
-            success:true,
-            message:'Book deleted successfully'
+            success: true,
+            message: 'Book deleted successfully'
         })
-    }catch(error){
-        console.error('Error dleting todo:',error);
+    } catch(error) {
+        console.error('Error deleting book:', error);
         return NextResponse.json(
-            {success:false, error:'failed to delete book.'},
-            {status:500}
+            {success: false, error: 'Failed to delete book'},
+            {status: 500}
         );
     }
 }
 
 //PUT
-export async function PUT(request: NextRequest, props: {params: {id: string}}) {
-    const params = props.params;
-    
+export async function PUT(request: NextRequest, {params}: {params: Promise<{id: string}>}) {
     try {
-        const {id} = params;
+        const {id} = await params;
         const body = await request.json();
         const {title, author, publishedYear} = body;
         
-        // Sadece gönderilen alanları güncelle
         const updateData: any = {};
         if (title !== undefined) updateData.title = title;
         if (author !== undefined) updateData.author = author;
