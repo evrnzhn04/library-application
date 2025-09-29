@@ -2,12 +2,9 @@ import prisma from "@/app/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
 // DELETE
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest, context: any) {
   try {
-    const { id } = params;
+    const { id } = context.params;
 
     await prisma.book.delete({
       where: { id },
@@ -27,12 +24,9 @@ export async function DELETE(
 }
 
 // PUT
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest, context: any) {
   try {
-    const { id } = params;
+    const { id } = context.params;
     const body = await request.json();
     const { title, author, publishedYear } = body;
 
@@ -62,12 +56,9 @@ export async function PUT(
 }
 
 // GET
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest, context: any) {
   try {
-    const { id } = params;
+    const { id } = context.params;
 
     const book = await prisma.book.findUnique({
       where: { id },
