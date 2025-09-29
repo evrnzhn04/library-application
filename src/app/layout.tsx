@@ -28,13 +28,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-600 text-slate-200`}
       >
-        <div className="flex flex-1 flex-row h-screen">
+        {/* Desktop Layout - Mevcut tasarımınız */}
+        <div className="hidden md:flex flex-1 flex-row h-screen">
           <Navbar/>
-
+          
           <div className="flex-1 overflow-auto">
             {children}
           </div>
-        </div>        
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden">
+          <Navbar/>
+          <div className="pt-16">
+            {children}
+          </div>
+        </div>
+        
       </body>
     </html>
   );
