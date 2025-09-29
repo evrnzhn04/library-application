@@ -1,8 +1,12 @@
 import prisma from "@/app/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+type RouteContext = {
+  params: { id: string }
+}
+
 // DELETE
-export async function DELETE(request: NextRequest, context: any) {
+export async function DELETE(request: NextRequest, context: RouteContext) {
   try {
     const { id } = context.params;
 
@@ -24,7 +28,7 @@ export async function DELETE(request: NextRequest, context: any) {
 }
 
 // PUT
-export async function PUT(request: NextRequest, context: any) {
+export async function PUT(request: NextRequest, context: RouteContext) {
   try {
     const { id } = context.params;
     const body = await request.json();
@@ -56,7 +60,7 @@ export async function PUT(request: NextRequest, context: any) {
 }
 
 // GET
-export async function GET(request: NextRequest, context: any) {
+export async function GET(request: NextRequest, context: RouteContext) {
   try {
     const { id } = context.params;
 
